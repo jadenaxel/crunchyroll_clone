@@ -9,10 +9,10 @@ import LogoUri from "@/assets/images/icon.png";
 
 const Logo: string = Image.resolveAssetSource(LogoUri).uri;
 
-const Header: FC<any> = ({ title }: any): JSX.Element => {
+const Header: FC<any> = ({ title, bg }: any): JSX.Element => {
 	return (
 		<SafeAreaView>
-			<View style={styles.main}>
+			<View style={[styles.main, bg ? { backgroundColor: Colors.background } : null]}>
 				<Image source={{ uri: Logo }} width={35} height={35} />
 				{title !== null ? <Text style={styles.title}>{title}</Text> : null}
 				<View style={styles.main_side}>

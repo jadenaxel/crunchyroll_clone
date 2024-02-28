@@ -13,7 +13,6 @@ const TabLayout: FC = (): JSX.Element => {
 				tabBarStyle: { backgroundColor: Colors.secondary, borderTopWidth: 0 },
 				tabBarActiveTintColor: Colors.primary,
 				tabBarInactiveTintColor: Colors.primaryText,
-				headerTransparent: true,
 			}}
 			initialRouteName="list"
 		>
@@ -23,6 +22,7 @@ const TabLayout: FC = (): JSX.Element => {
 					title: "Home",
 					tabBarIcon: ({ focused }: { focused: boolean }): JSX.Element => <Feather name={"home"} color={focused ? Colors.primary : Colors.primaryText} size={25} />,
 					header: () => <Header />,
+					headerTransparent: true,
 				}}
 			/>
 			<Tabs.Screen
@@ -30,7 +30,7 @@ const TabLayout: FC = (): JSX.Element => {
 				options={{
 					title: "My Lists",
 					tabBarIcon: ({ focused }: { focused: boolean }): JSX.Element => <Feather name={"bookmark"} color={focused ? Colors.primary : Colors.primaryText} size={25} />,
-					header: () => <Header title={"My Lists"} />,
+					header: () => <Header title={"My Lists"} bg />,
 				}}
 			/>
 			<Tabs.Screen
