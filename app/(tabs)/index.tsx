@@ -1,18 +1,28 @@
 import type { FC } from "react";
 
-import { ScrollView, StyleSheet, View, Text, ImageBackground, Pressable } from "react-native";
+import { useRef } from "react";
+import { ScrollView, StyleSheet, View, Text, ImageBackground, Pressable, Animated } from "react-native";
+
 import { StatusBar } from "expo-status-bar";
 import { Feather } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { Colors, Config } from "@/constants";
-import { Card } from "@/components";
+import { Card, Player } from "@/components";
 
 const coverUrl: string = "https://images4.alphacoders.com/131/1317168.jpeg";
 
 const Home: FC = (): JSX.Element => {
+	// const scrollY = useRef(new Animated.Value(0)).current;
+	// console.log(typeof scrollY, scrollY);
+
 	return (
-		<ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.container}>
+		<Animated.ScrollView
+			showsVerticalScrollIndicator={false}
+			contentContainerStyle={styles.container}
+			// onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], { useNativeDriver: true })}
+			// scrollEventThrottle={16}
+		>
 			<StatusBar backgroundColor="black" style="light" />
 			{/* Cover */}
 			<View style={styles.cover_container}>
@@ -30,7 +40,7 @@ const Home: FC = (): JSX.Element => {
 						</Text>
 						<View style={styles.cover__content_button}>
 							<Pressable style={styles.cover__content_continue}>
-								<Feather name="play" color={Colors.secondary} size={25} style={{ marginRight: 10 }} />
+								<Feather name="play" color={Colors.secondary} size={25} style={{ marginLeft: 10 }} />
 								<Text style={styles.cover__content_continue_text}>CONTINUE WATCHING S2 E11</Text>
 							</Pressable>
 							<Pressable style={styles.cover__content_bookmark}>
@@ -42,15 +52,24 @@ const Home: FC = (): JSX.Element => {
 				</ImageBackground>
 			</View>
 			{/* Top To Pick */}
-			<View style={styles.toptopick}>
-				<Text style={styles.toptopick_title}>Top Picks for You</Text>
-				<ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.toptopick_card}>
-					{[0, 1, 2].map((item: number) => {
-						return <Card key={item} />;
+			<View style={styles.seccion}>
+				<Text style={styles.seccionTitle}>Top Picks for You</Text>
+				<ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.seccionCard}>
+					{new Array(10).fill(2).map((item: number, i: number) => {
+						return <Card key={i} />;
 					})}
 				</ScrollView>
 			</View>
-		</ScrollView>
+			{/* Continue Watching */}
+			<View style={styles.seccion}>
+				<Text style={styles.seccionTitle}>Continue watching</Text>
+				<ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.seccionCard}>
+					{new Array(10).fill(2).map((item: number, i: number) => {
+						return <Player key={i} />;
+					})}
+				</ScrollView>
+			</View>
+		</Animated.ScrollView>
 	);
 };
 
@@ -114,6 +133,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 		padding: 10,
+		borderRadius: 4,
 	},
 	featured__gradient: {
 		aspectRatio: 1,
@@ -123,15 +143,16 @@ const styles = StyleSheet.create({
 		position: "absolute",
 		right: 0,
 	},
-	toptopick: {
+	seccion: {
 		paddingHorizontal: Config.paddingOffSet,
+		marginBottom: 20,
 	},
-	toptopick_title: {
+	seccionTitle: {
 		color: Colors.primaryText,
-		fontSize: 17,
+		fontSize: 20,
 		marginBottom: 10,
 	},
-	toptopick_card: {
+	seccionCard: {
 		flexDirection: "row",
 	},
 });
