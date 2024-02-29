@@ -22,10 +22,10 @@ const Card: FC = (): JSX.Element => {
 const styles = StyleSheet.create({
 	main: {
 		marginRight: 20,
+        width: Config.DWidth / 2.5,
 	},
 	cardImage: {
 		height: 230,
-		width: Config.DWidth / 2.5,
 		marginBottom: 10,
 		borderRadius: 4,
 	},

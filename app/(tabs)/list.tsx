@@ -4,7 +4,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 
 import { Colors } from "@/constants";
 
-import { WatchList, CrunchyList } from "@/pages/list";
+import { WatchList, CrunchyList, History, Oflfline } from "@/pages/list";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -20,14 +20,14 @@ const List: FC = (): JSX.Element => {
 				tabBarLabelStyle: {
 					width: 100,
 					color: Colors.primaryText,
-				}
+				},
 			}}
-			initialRouteName="CRUNCHYLISTS"
+			initialRouteName="HISTORY"
 		>
 			<Tab.Screen name="WATCHLIST" component={WatchList} />
 			<Tab.Screen name="CRUNCHYLISTS" component={CrunchyList} />
-			<Tab.Screen name="HISTORY" component={WatchList} />
-			<Tab.Screen name="OFFLINE" component={WatchList} />
+			<Tab.Screen name="HISTORY" component={History} />
+			<Tab.Screen name="OFFLINE" component={Oflfline} />
 		</Tab.Navigator>
 	);
 };
