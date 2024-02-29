@@ -14,14 +14,15 @@ const List: FC = (): JSX.Element => {
 			screenOptions={{
 				tabBarStyle: {
 					backgroundColor: Colors.background,
-					borderBottomColor: "grey",
-					borderBottomWidth: 1,
+					borderBottomColor: Colors.tertiary,
+					borderBottomWidth: 0.3,
 				},
 				tabBarLabelStyle: {
 					width: 100,
 					color: Colors.primaryText,
-				},
+				}
 			}}
+			initialRouteName="CRUNCHYLISTS"
 		>
 			<Tab.Screen name="WATCHLIST" component={WatchList} />
 			<Tab.Screen name="CRUNCHYLISTS" component={CrunchyList} />
