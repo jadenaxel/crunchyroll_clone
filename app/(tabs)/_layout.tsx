@@ -46,6 +46,7 @@ const TabLayout: FC = (): JSX.Element => {
 				options={{
 					title: "Simulcasts",
 					tabBarIcon: ({ focused }: { focused: boolean }): JSX.Element => <Feather name={"zap"} color={focused ? Colors.primary : Colors.primaryText} size={25} />,
+					header: () => <Header title={"Simulcast Season"} bg />,
 				}}
 			/>
 			<Tabs.Screen
@@ -53,6 +54,7 @@ const TabLayout: FC = (): JSX.Element => {
 				options={{
 					title: "Account",
 					tabBarIcon: ({ focused }: { focused: boolean }): JSX.Element => <Feather name={"user"} color={focused ? Colors.primary : Colors.primaryText} size={25} />,
+					header: () => <Header title={"My Account"} bg />,
 				}}
 			/>
 		</Tabs>
