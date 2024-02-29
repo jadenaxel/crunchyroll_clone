@@ -1,29 +1,46 @@
 import type { FC } from "react";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { ScrollView, StyleSheet, View, Text, ImageBackground, Pressable, Animated } from "react-native";
 
+import { useNavigation } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { Feather } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
 import { Colors, Config } from "@/constants";
-import { Card, Player } from "@/components";
+import { Card, Header, Player } from "@/components";
 
 const coverUrl: string = "https://images4.alphacoders.com/131/1317168.jpeg";
 
+const HEADER_CHANGE_SIZE: number = 200;
+const HEADER_CHANGE_MAX: number = 500;
+const SCROLL_DISTANCE: number = HEADER_CHANGE_MAX - HEADER_CHANGE_SIZE;
+
 const Home: FC = (): JSX.Element => {
-	// const scrollY = useRef(new Animated.Value(0)).current;
-	// console.log(typeof scrollY, scrollY);
+	const navigation = useNavigation();
+	const scrollY = useRef(new Animated.Value(0)).current;
+
+	const HeaderBackground = scrollY.interpolate({
+		inputRange: [0, SCROLL_DISTANCE],
+		outputRange: ["rgba(0,0,0,.01)", "#000"],
+		extrapolate: "clamp",
+	});
+
+	useEffect(() => {
+		navigation.setOptions({
+			header: () => <Header transition={HeaderBackground} />,
+		});
+	}, []);
 
 	return (
 		<Animated.ScrollView
 			showsVerticalScrollIndicator={false}
 			contentContainerStyle={styles.container}
-			// onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], { useNativeDriver: true })}
-			// scrollEventThrottle={16}
+			onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], { useNativeDriver: false })}
+			scrollEventThrottle={16}
 		>
-			<StatusBar backgroundColor="black" style="light" />
+			<StatusBar backgroundColor="black" style="light" translucent />
 			{/* Cover */}
 			<View style={styles.cover_container}>
 				<ImageBackground source={{ uri: coverUrl }} resizeMode={"cover"} style={styles.cover__background}>
@@ -93,7 +110,8 @@ const styles = StyleSheet.create({
 	},
 	cover__content_title: {
 		color: Colors.primaryText,
-		fontSize: 25,
+		// fontSize: 25,
+		fontSize: Config.DWidth / 15,
 		fontWeight: "400",
 		marginBottom: 10,
 	},
@@ -124,7 +142,8 @@ const styles = StyleSheet.create({
 	},
 	cover__content_continue_text: {
 		color: Colors.secondary,
-		fontSize: 17,
+		// fontSize: 17,
+		fontSize: Config.DWidth / 27,
 		fontWeight: "400",
 	},
 	cover__content_bookmark: {

@@ -2,7 +2,7 @@ import type { FC } from "react";
 
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
-import { Colors } from "@/constants";
+import { Colors, Config } from "@/constants";
 
 import { AllAnime, AnimeGenres } from "@/pages/browse";
 
@@ -20,9 +20,9 @@ const Browse: FC = (): JSX.Element => {
 				tabBarLabelStyle: {
 					width: 100,
 					color: Colors.primaryText,
+					fontSize: Config.DWidth / 37,
 				},
 			}}
-			// initialRouteName=""
 		>
 			<Tab.Screen name="All Anime" component={AllAnime} />
 			<Tab.Screen name="Simulcasts" component={AllAnime} />

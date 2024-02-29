@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
 	main: {
 		backgroundColor: Colors.background,
 		flex: 1,
+		padding: Config.paddingOffSet,
 	},
 	header: {
 		flexDirection: "row",

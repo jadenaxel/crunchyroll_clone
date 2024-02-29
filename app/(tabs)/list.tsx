@@ -2,7 +2,7 @@ import type { FC } from "react";
 
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
-import { Colors } from "@/constants";
+import { Colors, Config } from "@/constants";
 
 import { WatchList, CrunchyList, History, Oflfline } from "@/pages/list";
 
@@ -20,6 +20,7 @@ const List: FC = (): JSX.Element => {
 				tabBarLabelStyle: {
 					width: 100,
 					color: Colors.primaryText,
+                    fontSize: Config.DWidth / 37
 				},
 			}}
 		>

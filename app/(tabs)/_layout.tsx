@@ -21,7 +21,6 @@ const TabLayout: FC = (): JSX.Element => {
 				options={{
 					title: "Home",
 					tabBarIcon: ({ focused }: { focused: boolean }): JSX.Element => <Feather name={"home"} color={focused ? Colors.primary : Colors.primaryText} size={25} />,
-					header: () => <Header />,
 					headerTransparent: true,
 				}}
 			/>

@@ -12,10 +12,9 @@ interface Props {
 }
 
 const Card: FC<Props> = (props: Props): JSX.Element => {
-	console.log(props);
 	return (
 		<Pressable
-			onLongPress={() => console.log("Gola")}
+			onLongPress={() => log("Gola")}
 			style={props?.full ? { marginRight: Config.DWidth / 25, width: Config.DWidth / 2.2, marginBottom: 20 } : { marginRight: 20, width: Config.DWidth / 2.5 }}
 		>
 			<Image source={{ uri: CardImage }} style={styles.cardImage} resizeMode="cover" />

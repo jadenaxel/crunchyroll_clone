@@ -35,7 +35,7 @@ const Watched: FC<Props> = (props: Props): JSX.Element => {
 const styles = StyleSheet.create({
 	main: {
 		marginBottom: 15,
-		width: Config.DWidth / 2.1,
+		width: Config.DWidth / 2.3,
 		marginRight: Config.DWidth / 20,
 	},
 	anime: {

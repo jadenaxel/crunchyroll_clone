@@ -15,10 +15,10 @@ const Player: FC = (): JSX.Element => {
 			<View style={styles.content}>
 				<View>
 					<Text style={[styles.text, styles.title]}>One Piece</Text>
-					<Text style={styles.text}>Season 14, Episode 1095</Text>
+					<Text style={[styles.text, { fontSize: Config.DWidth / 30 }]}>Season 14, Episode 1095</Text>
 				</View>
 				<View style={styles.remaining}>
-					<Text style={styles.text}>2m left</Text>
+					<Text style={[styles.text, { fontSize: Config.DWidth / 30 }]}>2m left</Text>
 				</View>
 			</View>
 		</ImageBackground>
