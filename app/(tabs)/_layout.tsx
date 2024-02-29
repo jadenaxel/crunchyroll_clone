@@ -14,7 +14,7 @@ const TabLayout: FC = (): JSX.Element => {
 				tabBarActiveTintColor: Colors.primary,
 				tabBarInactiveTintColor: Colors.primaryText,
 			}}
-			initialRouteName="list"
+			initialRouteName="browse"
 		>
 			<Tabs.Screen
 				name="index"
@@ -38,6 +38,7 @@ const TabLayout: FC = (): JSX.Element => {
 				options={{
 					title: "Browse",
 					tabBarIcon: ({ focused }: { focused: boolean }): JSX.Element => <Feather name={"grid"} color={focused ? Colors.primary : Colors.primaryText} size={25} />,
+					header: () => <Header title={"Browse"} bg />,
 				}}
 			/>
 			<Tabs.Screen

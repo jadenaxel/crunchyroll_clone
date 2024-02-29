@@ -22,7 +22,6 @@ const List: FC = (): JSX.Element => {
 					color: Colors.primaryText,
 				},
 			}}
-			initialRouteName="HISTORY"
 		>
 			<Tab.Screen name="WATCHLIST" component={WatchList} />
 			<Tab.Screen name="CRUNCHYLISTS" component={CrunchyList} />

@@ -1,16 +1,33 @@
-import { Colors } from "@/constants";
 import type { FC } from "react";
 
-import { View, Text, StyleSheet } from "react-native";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+
+import { Colors } from "@/constants";
+
+import { AllAnime, AnimeGenres } from "@/pages/browse";
+
+const Tab = createMaterialTopTabNavigator();
 
 const Browse: FC = (): JSX.Element => {
-	return <View style={styles.main}></View>;
+	return (
+		<Tab.Navigator
+			screenOptions={{
+				tabBarStyle: {
+					backgroundColor: Colors.background,
+					borderBottomColor: Colors.tertiary,
+					borderBottomWidth: 0.3,
+				},
+				tabBarLabelStyle: {
+					width: 100,
+					color: Colors.primaryText,
+				},
+			}}
+			// initialRouteName=""
+		>
+			<Tab.Screen name="All Anime" component={AllAnime} />
+			<Tab.Screen name="Simulcasts" component={AllAnime} />
+			<Tab.Screen name="Anime Genres" component={AnimeGenres} />
+		</Tab.Navigator>
+	);
 };
-const styles = StyleSheet.create({
-	main: {
-		flex: 1,
-		backgroundColor: Colors.background,
-	},
-});
-
 export default Browse;
