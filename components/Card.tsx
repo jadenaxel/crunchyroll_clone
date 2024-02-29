@@ -5,19 +5,18 @@ import { Pressable, View, Text, StyleSheet, Image } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { Colors, Config } from "@/constants";
 
-const CardImage: string = "https://images3.alphacoders.com/134/1342304.jpeg";
+export const CardImageLuffy: string = "https://images3.alphacoders.com/134/1342304.jpeg";
 
 interface Props {
 	full?: any;
 }
 
 const Card: FC<Props> = (props: Props): JSX.Element => {
+	const isFull = props?.full ? {  } : null;
+
 	return (
-		<Pressable
-			onLongPress={() => log("Gola")}
-			style={props?.full ? { marginRight: Config.DWidth / 25, width: Config.DWidth / 2.2, marginBottom: 20 } : { marginRight: 20, width: Config.DWidth / 2.5 }}
-		>
-			<Image source={{ uri: CardImage }} style={styles.cardImage} resizeMode="cover" />
+		<Pressable style={[isFull, styles.main]}>
+			<Image source={{ uri: CardImageLuffy }} style={styles.cardImage} resizeMode="cover" />
 			<Text style={styles.cardTitle}>One Piece</Text>
 			<View style={styles.cardMore}>
 				<Text style={styles.cardMore_text}>Dub | Sub</Text>
@@ -27,7 +26,10 @@ const Card: FC<Props> = (props: Props): JSX.Element => {
 	);
 };
 const styles = StyleSheet.create({
-	main: {},
+	main: {
+		marginRight: Config.DWidth / 25,
+		width: Config.DWidth / 2.3,
+	},
 	cardImage: {
 		height: Config.DHeight / 3,
 		marginBottom: 10,

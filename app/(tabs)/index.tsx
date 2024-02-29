@@ -19,11 +19,12 @@ const SCROLL_DISTANCE: number = HEADER_CHANGE_MAX - HEADER_CHANGE_SIZE;
 
 const Home: FC = (): JSX.Element => {
 	const navigation = useNavigation();
-	const scrollY = useRef(new Animated.Value(0)).current;
 
-	const HeaderBackground = scrollY.interpolate({
+	const scrollEvent: Animated.Value = useRef(new Animated.Value(0)).current;
+
+	const HeaderBackground = scrollEvent.interpolate({
 		inputRange: [0, SCROLL_DISTANCE],
-		outputRange: ["rgba(0,0,0,.01)", "#000"],
+		outputRange: ["rgba(0,0,0,.01)", Colors.background],
 		extrapolate: "clamp",
 	});
 
@@ -37,10 +38,10 @@ const Home: FC = (): JSX.Element => {
 		<Animated.ScrollView
 			showsVerticalScrollIndicator={false}
 			contentContainerStyle={styles.container}
-			onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], { useNativeDriver: false })}
+			onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollEvent } } }], { useNativeDriver: false })}
 			scrollEventThrottle={16}
 		>
-			<StatusBar backgroundColor="black" style="light" translucent />
+			<StatusBar backgroundColor="black" style="light" />
 			{/* Cover */}
 			<View style={styles.cover_container}>
 				<ImageBackground source={{ uri: coverUrl }} resizeMode={"cover"} style={styles.cover__background}>

@@ -11,7 +11,7 @@ const Oflfline: FC = (): JSX.Element => {
 	return (
 		<View style={styles.main}>
 			<Text style={styles.header}>MANAGE</Text>
-			<FlatList data={data} renderItem={() => <Card full />} keyExtractor={(item: any) => item.id} numColumns={2} />
+			<FlatList data={data} renderItem={() => <Card full />} keyExtractor={(item: any) => item.id} numColumns={2} columnWrapperStyle={{ marginBottom: 20 }} />
 		</View>
 	);
 };
